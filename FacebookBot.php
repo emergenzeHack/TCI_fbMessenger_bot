@@ -92,8 +92,7 @@ class FacebookBot
 		$response = self::executePost($url, $parameters, true);
 		if($response)
 		{
-			$responseObject = json_decode($response);
-			return is_object($responseObject) && isset($responseObject->recipient_id) && isset($responseObject->message_id);
+			return json_decode($response);
 		}
 		return false;
 	}

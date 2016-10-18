@@ -23,9 +23,20 @@ if(isset($feedTitle) && isset($feedLink))
 	$bot = new FacebookBot();
 	$userManager = new DbManager();
 	$st = $userManager->getAllUsers();
+	$idTodel = array();
 	while ($row = $st->fetch(PDO::FETCH_ASSOC))
 	{
-		$bot->sendGenericMessage($row['id'], $feedTitle, $feedLink);
+		$respObject = $bot->sendGenericMessage($row['id'], $feedTitle, $feedLink);
+		if(is_object($respObject) && isset($respObject->error) && $respObject->error->code == 200)
+			$idTodel[] = $row['id'];
+	}
+
+	if(count($idTodel)>0)
+	{
+		foreach ($idTodel as $id)
+		{
+			$userManager->deleteUser($id);	
+		}
 	}
 }
 
