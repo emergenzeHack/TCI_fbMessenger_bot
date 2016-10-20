@@ -6,13 +6,8 @@
 require_once 'FacebookBot.php';
 require_once 'DbManager.php';
 
-$content = file_get_contents("php://input");
-$update = json_decode($content, true);
-if (!$update)
-	exit;
-
-$feedTitle = isset($update['title']) ? $update['title'] : null;
-$feedLink = isset($update['link']) ? $update['link'] : null;
+$feedTitle = isset($_POST['title']) ? $_POST['title'] : null;
+$feedLink = isset($_POST['url']) ? $_POST['url'] : null;
 
 if(isset($feedTitle) && isset($feedLink))
 {
