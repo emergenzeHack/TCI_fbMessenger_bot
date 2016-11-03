@@ -5,7 +5,7 @@ require_once 'FacebookBot.php';
 $bot = new FacebookBot();
 
 //Il messaggio deve avere massimo 160 caratteri.
-$welcomeMessage = "Benvenuto. Clicca su \"Iniza\" o invia START per ricevere aggiornamenti periodici sul terremoto del 24 agosto 2016. Invia STOP per annullare l'iscrizione.";  
+$welcomeMessage = "Benvenuto. Clicca su \"Inizia\" o invia START per ricevere aggiornamenti periodici sul terremoto del 24 agosto 2016. Invia STOP per annullare l'iscrizione.";  
 
 $updated = $bot->setWelcomeMessage($welcomeMessage);
 if($updated)
